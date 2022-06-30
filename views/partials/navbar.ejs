@@ -1,0 +1,23 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light " style="background-color: #E9DAC1;">
+    <div class="container-fluid">
+      <a class="navbar-brand"  >PropDot</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav me-auto mb-2 mb-lg-0">
+              <a class="nav-link "  href="/">Home</a>
+            <a class="nav-link"  href="/properties">RealEstates</a>
+            <a class="nav-link"  href="/properties/new">Add Property</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+          <% if(!currentUser) {%>
+            <a class="nav-link" id="nav" href="/login">Login</a>
+            <a class="nav-link" id="nav" href="/register">Register</a>
+            <% } else {%>
+            <a class="nav-link" id="nav" href="/logout">Logout</a>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>

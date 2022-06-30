@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate') %> 
+    <div class="row">
+        <h1 class="text-center" style="color: rgb(255, 255, 255) ;
+        -webkit-text-fill-color: rgb(255, 255, 255) ;"> Edit Property Detail</h1>
+        <div class="col-6 offset-3">
+            <form action="/properties/<%= house._id %>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title" style="color: rgb(255, 255, 255) ;
+                    -webkit-text-fill-color: rgb(255, 255, 255) ;">Title</label>
+                    <input class="form-control" type="text" id="title" name="property[title]" value="<%=house.title %>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location" style="color: rgb(255, 255, 255) ;
+                    -webkit-text-fill-color: rgb(255, 255, 255) ;">Location</label>
+                    <input class="form-control" type="text" id="location" name="property[location]" value="<%= house.location%>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>         
+                <div class="mb-3">
+                    <label class="form-label" for="price" style="color: rgb(255, 255, 255) ;
+                    -webkit-text-fill-color: rgb(255, 255, 255) ;">Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="number" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                            aria-describedby="price-label" name="property[price]" value="<%=house.price %>"
+                            required>
+                            <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description" style="color: rgb(255, 255, 255) ;
+                    -webkit-text-fill-color: rgb(255, 255, 255) ;">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="property[description]" required> <%= house.description %> </textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>   
+                <div class="mb-3">
+                    <label class ="mb-3" for="image" style="color: rgb(255, 255, 255) ;
+                    -webkit-text-fill-color: rgb(255, 255, 255) ;">Upload Images</label>
+                    <div class="form-file ">
+                        <input type="file"  id="image" name="image" multiple style="color: rgb(255, 255, 255) ;
+                        -webkit-text-fill-color: rgb(255, 255, 255) ;">
+                    </div>
+                </div>
+                <h6 style="color: rgb(255, 255, 255) ; -webkit-text-fill-color: rgb(255, 255, 255) ;">Select Images to Delete</h6>
+                <div class="mb-3">
+                    <% house.images.forEach(function(img, i) {  %>
+                    <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="">
+                    <div class="form-check-inline">
+                        <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                    </div>
+                    <label for="image-<%=i%>" style="color: rgb(255, 255, 255) ;
+                        -webkit-text-fill-color: rgb(255, 255, 255) ;"></label>
+                    <% })%>
+                </div>
+                <button class="mb-3 btn btn-info">Update Details</button>
+            </form>
+            <a class="btn btn-dark mb-3" href="/properties">Explore Properties</a>
+        </div>
+    </div>
